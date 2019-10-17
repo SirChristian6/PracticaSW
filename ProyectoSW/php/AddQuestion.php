@@ -8,8 +8,28 @@
   <section class="main" id="s1">
     <div>
 
-			Código PHP para añadir una pregunta sin imagen
+		<?php 
+			include "DbConfig.php";
+			$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 
+			if(!$mysqli){
+				
+				die ("<h2> Lo siento, no se ha podido insertar su pregunta, vuelva a intentarlo o pruebe más tarde.</h2></br>
+					  <h2> Disculpe las molestias causadas.</h2></br> 
+					  <a href='QuestionForm.php'> Volver a Insertar Pregunta </a>");
+			}
+
+			$sql="INSERT INTO preguntas (email,pregunta,respcor,respinc1,respinc2,respinc3,complejidad,tema) VALUES ('$_POST[email]','$_POST[pregunta]','$_POST[respc]','$_POST[resp1]','$_POST[resp2]','$_POST[resp3]','$_POST[comp]','$_POST[tema]')";
+
+			if (!mysqli_query($mysqli ,$sql)){
+				die ("<h2> Lo siento, no se ha podido insertar su pregunta, vuelva a intentarlo o pruebe más tarde.</h2></br>
+					  <h2> Disculpe las molestias causadas.</h2></br> 
+					  <a href='QuestionForm.php'> Volver a Insertar Pregunta </a>");
+			}
+			echo "<h2> Pregunta añadida correctamente </h2>";
+			echo "<p> <a href='ShowQuestions.php'> Ver Preguntas </a>";
+			mysqli_close($mysqli); 
+		?>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
