@@ -10,7 +10,14 @@
 
 		<?php 
 			include "DbConfig.php";
-			$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
+			if(isset($_POST['email'])){
+			    $mysqli=mysqli_connect($server,$user,$pass,$basededatos);
+			}
+            else{
+                die("<h2> Lo siento, no se ha recibido ningún dato, vuelva a intentarlo o pruebe más tarde.</h2></br>
+					  <h2> Disculpe las molestias causadas.</h2></br>
+					  <a href='QuestionForm.php'> Ir a Insertar Pregunta </a>");
+            }
 
 			if(!$mysqli){
 				
