@@ -68,6 +68,7 @@
 							mysqli_close($mysqli);
 
 							if($encontrado==1){
+							    echo("<script> alert('Bienvenido a nuestro sitio web');</script>");
 								echo("<script> location.href='Layout.php?email=".$email."';</script>");
 							}
 							else{

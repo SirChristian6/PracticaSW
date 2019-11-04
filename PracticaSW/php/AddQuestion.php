@@ -60,6 +60,25 @@
 
 										if(!$err){
 
+
+
+
+
+											$xml = simplexml_load_file('../xml/Questions.xml');
+											$pregunta = $xml->addChild('assessmentItem');
+											$pregunta->addAttribute('subject', $_POST['tema']);
+											$pregunta->addAttribute('author', $_POST['email']);
+												$itemBody=$pregunta->addChild('itemBody');
+													$itemBody->addChild('p',$_POST['pregunta']);
+												$correctResponse=$pregunta->addChild('correctResponse');
+													$correctResponse->addChild('value',$_POST['respc']);
+												$incorrectResponses=$pregunta->addChild('incorrectResponses');
+													$incorrectResponses->addChild('value',$_POST['resp1']);
+													$incorrectResponses->addChild('value',$_POST['resp2']);
+													$incorrectResponses->addChild('value',$_POST['resp3']);
+											$xml->asXML('../xml/Questions.xml');
+
+
 											$sql="INSERT INTO preguntas (email,pregunta,respcor,respinc1,respinc2,respinc3,complejidad,tema) VALUES ('$_POST[email]','$_POST[pregunta]','$_POST[respc]','$_POST[resp1]','$_POST[resp2]','$_POST[resp3]','$_POST[comp]','$_POST[tema]')";
 
 											if (mysqli_query($mysqli ,$sql)){

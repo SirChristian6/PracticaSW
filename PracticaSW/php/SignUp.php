@@ -126,6 +126,7 @@
 
 										if (mysqli_query($mysqli ,$sql)){
 											mysqli_close($mysqli);
+											echo("<script> alert('Usted se ha registrado correctamente');</script>");
 											echo("<script> location.href='LogIn.php';</script>");
 										}
 										else{

@@ -33,8 +33,8 @@
 			
 		}
 		if(!$encontrado){
-			echo("<span class='right'><a href='SignUp.php'>Registro</a></span> ");
-	    	echo("<span class='right'> <a href='LogIn.php'>Login</a></span>");
+			echo("<span class='right'><a href='SignUp.php'>Registro</a></span>");
+	    	echo("<span class='right'><a href='LogIn.php'>Login</a></span>");
 		}
 
     ?>
@@ -63,6 +63,7 @@
 						echo("<span><a href='Credits.php?email=".$email."'>Creditos</a></span>");
 						echo("<span><a href='QuestionForm.php?email=".$email."'> Insertar Pregunta</a></span>");
 					  	echo("<span><a href='ShowQuestions.php?email=".$email."'> Ver Preguntas</a></span>");
+					  	echo("<span><a href='ShowXmlQuestions.php?email=".$email."'> Ver Preguntas XML</a></span>");
 					}
 					$sql->close();
 				}
