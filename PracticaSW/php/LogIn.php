@@ -31,7 +31,7 @@
 								if( strcmp($usuarios['email'], $email)==0 ){
 									$sql->close();
 									mysqli_close($mysqli);
-									echo("<script> location.href='Layout.php?email=".$email."';</script>");
+									echo("<script>alert('Bienvenido'); location.href='IncreaseGlobalCounter.php?email=".$email."';</script>");
 								}
 							}
 							$sql->close();
@@ -68,8 +68,7 @@
 							mysqli_close($mysqli);
 
 							if($encontrado==1){
-							    echo("<script> alert('Bienvenido a nuestro sitio web');</script>");
-								echo("<script> location.href='Layout.php?email=".$email."';</script>");
+							    echo("<script>alert('Bienvenido'); location.href='IncreaseGlobalCounter.php?email=".$email."';</script>");
 							}
 							else{
 								echo("<h3 style='color:red'> Lo siento, no se ha podido iniciar sesion, Email o Contraseña incorrectas.</h2></br>");
