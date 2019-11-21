@@ -5,7 +5,7 @@
 </head>
 <body>
   	<?php include '../php/Menus.php' ?>
-  	<section class='main' id='s1'>
+  	<section class='main' id='s1' style='overflow-y: scroll;'>
     	<div>
 
 		
@@ -14,9 +14,9 @@
 
 			    <form id='flogin' name='flogin' method='POST' enctype='multipart/form-data'>
 		            <strong>E-mail de la UPV/EHU*:</strong> 		
-		            <input type='text' id='email' 	 name='email'><br><br>
+		            <input type='text' id='email' name='email' onchange='verifyVip()' autofocus> <span id='response1'></span><br><img id='vip' width='100'/><br><br>
 
-		            <strong>Tipo de Usuario*:</strong>
+		            <strong>Tipo de Usuario:</strong>
 		            <select id='tusr' name='tusr' size='1'>
 			            <option value='alumno'>Alumno</option>
 			            <option value='profesor'>Profesor</option>
@@ -26,23 +26,25 @@
 		            <input type='text' id='nomap' name='nomap'><br><br>
 
 		            <strong>Contraseña*:</strong> 			
-		            <input type='password' id='pass1' 	 name='pass1'><br><br>
+		            <input type='password' id='pass1' name='pass1' onchange='verifyPassword()'><span id='response2'></span><br><img id='verpas' width='100'/><br><br>
 
 		            <strong>Repetir Contraseña*:</strong>	
-		            <input type='password' id='pass2' 	 name='pass2'><br><br>
+		            <input type='password' id='pass2' name='pass2'><br><br>
 
 		            <strong>Avatar*:</strong>				
 		            <input type='file' id='foto' name='foto' accept='image/*' onchange='verImagen(event)'><br><br>
 		            <img id='imagen' name='imagen' width='100' ><br> 
 
-		            <input type='submit' value='Registrarse' id='regis'>
+		            <input type='submit' value='Registrarse' id='regis' disabled='true'>
 		        </form>
 		        <script src="../js/jquery-3.4.1.min.js"></script>
+		        <script src="../js/ValidateVipPass.js"></script>
 		        <script type='text/javascript'>
 		        	function verImagen(event){
 		        		$("#imagen").attr("src",URL.createObjectURL(event.target.files[0]));
 		        	};
 		        </script>
+
 
 		        <?php 
 					include "DbConfig.php";
