@@ -39,16 +39,16 @@ function verifyPassword(){
 	        }
 	        else if(response=="VALIDA"){
 	            esPasValida=true;
-	        	$("#regis").attr("disabled", false);
 	        	$("#response2").html(" La contraseña es VALIDA");
 	        	$("#verpas").attr("src","../images/dancingPikachu.gif");
+	        	camposValidos();
 	        }
 	        else if(response=="SIN SERVICIO"){
 	        	esPasValida=false;
 	        	$("#regis").attr("disabled", true);
 	        	$("#response2").html("Lo sentimos pero no ha sido posible acceder al Servicio Web");
-	        	$("#verpas").attr("src","");
-	        	camposValidos();
+	        	$("#verpas").attr("src","../images/charizard.gif");
+	        	
 	        }
 		}
 	});
