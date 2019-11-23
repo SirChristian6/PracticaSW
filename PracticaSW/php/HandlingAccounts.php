@@ -25,19 +25,10 @@
 										 
 										<td><img width='100' heigth='100' src='../images/$usuarios[avatar]'></td>
 										<td>$usuarios[estado]</td>
-										<td><input type='button' id='c".$num."' value='Cambiar Estado'></td>
-										<td><input type='button' id='b".$num."' value='Borrar Usuario'></td>
+										<td><input type='button' value='Cambiar Estado' onclick='cambiarEstado(&quot;".$usuarios['email']."&quot;)'></td>
+										<td><input type='button'  value='Borrar Usuario' onclick='borrarUsuario(&quot;".$usuarios['email']."&quot;)'></td>
 									</tr>
 									");
-								
-								$script=$script." $('#b".$num."').click(function (){
-									if(confirm('¿Seguro que desea borrar a este usuario?')){
-										location.href='../php/RemoveUser.php?email=".$usuarios['email']."';
-									}});";
-								$script=$script." $('#c".$num."').click(function (){
-									if(confirm('¿Seguro que desea bloquear/activar a este usuario?')){
-										location.href='../php/ChangeState.php?email=".$usuarios['email']."';
-									}});";
 								$num++;
 							}
 							echo("</table>");
@@ -57,10 +48,6 @@
 	  	</section>
 	  	<?php include '../html/Footer.html' ?>
 	  	<script src="../js/jquery-3.4.1.min.js"></script>
-	  	<script> 
-	  		<?php
-	  			echo($script);
-	  		?>
-	  	</script>
+	  	<script src="../js/HandlingAccounts.js"></script>
 	</body>
 </html>
