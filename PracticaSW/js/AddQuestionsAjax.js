@@ -1,8 +1,8 @@
-function insertarPregunta(email){
+function insertarPregunta(){
 	var dataString = $("#fquestion").serialize();
     $.ajax({
         type: "POST",
-        url: "../php/AddQuestion.php?email="+email,
+        url: "../php/AddQuestion.php",
         data: dataString,
         cache: false,
         success: function(data){

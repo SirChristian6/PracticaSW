@@ -41,7 +41,7 @@ function validar(){
 		alert(text);
 		return false;
 	}
-	insertarPregunta(email);
+	insertarPregunta();
 	return true;
 	
 }

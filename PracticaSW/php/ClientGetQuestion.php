@@ -1,3 +1,4 @@
+<?php include '../php/Security.php' ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +11,7 @@
 		<section class="main" id="s1" class="main" id="s1" style="overflow-y: scroll;">
 		    <div style="text-align: left; margin-left: 15%; font-size: 20px ;">
 		    	<?php
-		    		if($encontrado){
+		    		if($encontrado==2){
 						echo("<form name='datos' id='datos' method='POST'>
 								<strong>Identificador de la pregunta</strong> <input type='text' id='ident' name='ident'></input>
 								<input type='submit' name='buscar' value='Buscar Pregunta'></input>
@@ -49,6 +50,10 @@
 								);
 							}
 						}
+					}
+					else if($encontrado==1){
+		        		echo("<script>alert('Lo sentimos, pero como administrador no tiene permiso para gestionar las preguntas');</script>");
+						echo("<script>location.href='Layout.php';</script>");
 					}
 					else{
 						echo("<script>location.href='Layout.php';</script>");
