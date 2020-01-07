@@ -15,7 +15,7 @@
 			    <form id="fquestion" name="fquestion" method="POST" >
 		            <strong>E-mail de la UPV/EHU:</strong> 		<input type="text" id="email" 	 name="email"><br><br>
 		            <strong>Contraseña:</strong> 	<input type="password" id="passwd" name="passwd"><br><br>
-		            
+		            <span><a href='CambiarPass1.php'>¿Ha olvidado su contraseña?</a></span><br>
 		            <input type="submit" value="Entrar" id="entrar">
 		        </form>
 		    </div>

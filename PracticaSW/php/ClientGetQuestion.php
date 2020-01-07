@@ -11,7 +11,7 @@
 		<section class="main" id="s1" class="main" id="s1" style="overflow-y: scroll;">
 		    <div style="text-align: left; margin-left: 15%; font-size: 20px ;">
 		    	<?php
-		    		if($encontrado==2){
+		    		if($encontrado==2||$encontrado==3){
 						echo("<form name='datos' id='datos' method='POST'>
 								<strong>Identificador de la pregunta</strong> <input type='text' id='ident' name='ident'></input>
 								<input type='submit' name='buscar' value='Buscar Pregunta'></input>

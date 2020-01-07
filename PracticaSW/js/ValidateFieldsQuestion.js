@@ -1,12 +1,8 @@
 function validar(){
-	var emailER=/^[a-z]+([0-9]{3}@ikasle\.|(\.[a-z]+)?@)ehu\.(eus|es)$/;
-	var email=$("#email").val();
+	
+	
 	var errno=0;
 	var text="";
-	if(!emailER.test(email)){
-		text+="E-mail inadecuado";
-		errno++;
-	}
 	var pregunta=$("#pregunta").val();
 	if($.trim(pregunta).length<10){
 		text+="\n\rPregunta demasiado corta";

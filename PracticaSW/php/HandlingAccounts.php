@@ -19,16 +19,17 @@
 							$num=0;
 							$script="";
 							while( $usuarios=mysqli_fetch_array($sql)){
-								echo("<tr>
-										<td>$usuarios[email]</td>
-										<td>$usuarios[password]</td>
-										 
-										<td><img width='100' heigth='100' src='../images/$usuarios[avatar]'></td>
-										<td>$usuarios[estado]</td>
-										<td><input type='button' value='Cambiar Estado' onclick='cambiarEstado(&quot;".$usuarios['email']."&quot;)'></td>
-										<td><input type='button'  value='Borrar Usuario' onclick='borrarUsuario(&quot;".$usuarios['email']."&quot;)'></td>
-									</tr>
-									");
+								if(strcmp($usuarios['email'],"admin@ehu.es")!=0){
+									echo("<tr>
+											<td>$usuarios[email]</td>
+											<td>$usuarios[password]</td>
+											<td><img width='100' heigth='100' src='$usuarios[avatar]'></td>
+											<td>$usuarios[estado]</td>
+											<td><input type='button' value='Cambiar Estado' onclick='cambiarEstado(&quot;".$usuarios['email']."&quot;)'></td>
+											<td><input type='button'  value='Borrar Usuario' onclick='borrarUsuario(&quot;".$usuarios['email']."&quot;)'></td>
+										</tr>
+										");
+								}
 								$num++;
 							}
 							echo("</table>");
@@ -39,6 +40,10 @@
 	  			}
 	  			else if($encontrado==2){
 	  				echo("<script>alert('Lo sentimos, pero como Profesor/Alumno no tiene permiso para gestionar las cuentas');</script>");
+					echo("<script>location.href='Layout.php';</script>");
+	  			}
+	  			else if($encontrado==3){
+	  				echo("<script>alert('Lo sentimos, pero como invitado no tiene permiso para gestionar las cuentas');</script>");
 					echo("<script>location.href='Layout.php';</script>");
 	  			}
 	  			else{

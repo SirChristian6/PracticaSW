@@ -12,14 +12,14 @@
 		    	<h2>FORMULARIO PARA AÑADIR PREGUNTA</h2><br>
 				<div style="text-align: left; margin-left: 15%; font-size: 20px ;">
 					<?php
-						if($encontrado==2){//profesor o alumno
+						if($encontrado==2||$encontrado==3){//profesor o alumno
 					    	echo("
 
 					    		<div>
 					    		<h3 >Usuarios Modificando Preguntas:</h3><div id='usuarios'></div><br>
 					    		<h3 >Mis preguntas/Todas las preguntas:</h3><p id='contador'></p><br>
 					    		</div>
-					    		<form id='fquestion' name='fquestion' method='POST'> 	 
+					    		<form id='fquestion' name='fquestion' method='POST' enctype='multipart/form-data'> 	 
 					    			<strong>E-mail de la UPV/EHU*:</strong> 
 					    			<input type='text' id='email' name='email' value='".$email."' readonly><br><br>
 					    			<strong>Enunciado de la pregunta*:</strong> 	
@@ -39,6 +39,9 @@
 					    				<option value='3'>Alta</option>
 					    			</select><br><br>
 					    			<strong>Tema de la pregunta*:</strong><input type='text' id='tema' name='tema'><br><br>
+					    			<strong>Imagen relacionada:</strong>				
+		            				<input type='file' id='foto' name='foto' accept='image/*' onchange='verImagen(event)'><br><br>
+		            				<img id='imag' name='imagen' width='100' ><br> 
 					   				<input type='button' value='Insertar Pregunta' id='insertar' onclick='validar()'>
 					    			<input type='button' value='Ver Preguntas' id='ver' onclick ='verPreguntas()'>
 					    			<input type='reset' value='Vaciar Formulario' id='vaciar'>
@@ -62,7 +65,7 @@
 		</section>
 		<?php include '../html/Footer.html' ?>
 		
-		<script src="../js/ValidateFieldsQuestions.js"></script>
+		<script src="../js/ValidateFieldsQuestion.js"></script>
 		<script src="../js/ShowQuestionsAjax.js"></script>
 		<script src="../js/AddQuestionsAjax.js"></script>
 		<script src="../js/CountQuestionsAjax.js"></script>
@@ -77,6 +80,9 @@
 				$("#respuestaServ").html("");
 				$("#preguntas").html("");
 			});
+			function verImagen(event){
+        		$("#imag").attr("src",URL.createObjectURL(event.target.files[0]));
+        	}
 		</script>
 		
 	</body>

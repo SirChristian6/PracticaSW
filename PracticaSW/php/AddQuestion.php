@@ -1,15 +1,12 @@
 <?php include '../php/Security.php' ?>
 <?php 
 
-	if($encontrado==2){
+	if($encontrado==2||$encontrado==3){
 		if(isset($_POST['email']) && isset($_POST['pregunta']) && isset($_POST['respc']) && isset($_POST['resp1']) && isset($_POST['resp2']) && isset($_POST['resp3']) && isset($_POST['comp']) && isset($_POST['tema'])){
 					
 			$err=false;
 
-			if( !(preg_match("/^[a-z]+([0-9]{3}@ikasle\.|(\.[a-z]+)?@)ehu\.(eus|es)$/",$_POST['email']) ) ){
-				$err=true;
-    		}
-			else if( !( strlen($_POST['pregunta'])>=10 ) ){
+			if( !( strlen($_POST['pregunta'])>=10 ) ){
 				$err=true;
 			}
 			else if( !( strlen($_POST['respc'])>0 ) ){
@@ -39,7 +36,18 @@
 				include "DbConfig.php";
 				$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 				if($mysqli){
-					$sql="INSERT INTO preguntas (email,pregunta,respcor,respinc1,respinc2,respinc3,complejidad,tema) VALUES ('$_POST[email]','$_POST[pregunta]','$_POST[respc]','$_POST[resp1]','$_POST[resp2]','$_POST[resp3]','$_POST[comp]','$_POST[tema]')";
+				
+				    if (!empty($_FILES['foto']['name'])){
+						$imagen=$_POST['email'].$_FILES['foto']['name'];
+						$imagenTMP=$_FILES['foto']['tmp_name'];
+						$carpeta="C:/xampp/htdocs/ProyectoSW/images/";
+						move_uploaded_file($imagenTMP, $carpeta.$imagen);
+					}
+					else{
+						$imagen="../images/sinFoto.jpg";
+					}
+					$sql="INSERT INTO preguntas (email,pregunta,respcor,respinc1,respinc2,respinc3,complejidad,tema,imagen) VALUES ('$_POST[email]','$_POST[pregunta]','$_POST[respc]','$_POST[resp1]','$_POST[resp2]','$_POST[resp3]','$_POST[comp]','$_POST[tema]','$imagen')";
+					
 
 					if (mysqli_query($mysqli ,$sql)){
 						$xml = simplexml_load_file('../xml/Questions.xml');

@@ -116,7 +116,7 @@
     										}
     										
     										$password=crypt($_POST['pass1'],'$1$5ECRE705$');
-    										$sql="INSERT INTO usuarios (email,nombre,apellidos,rol,password,avatar,estado) VALUES ('$_POST[email]','$nombre','$apellidos','$tusr','$password','$imagen','activado')";
+    										$sql="INSERT INTO usuarios (email,nombre,apellidos,rol,password,avatar,estado) VALUES ('$_POST[email]','$nombre','$apellidos','$tusr','$password','../images/$imagen','activado')";
     
     										if (mysqli_query($mysqli ,$sql)){
     											mysqli_close($mysqli);
